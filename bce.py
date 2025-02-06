@@ -13,7 +13,7 @@ class LinearSoftmax(torch.nn.Module):
         return logits
 
 if __name__ == "__main__":
-    epochs = 10
+    epochs = 25
     batch_size_train = 64
     batch_size_test = 1000
     learning_rate = 0.01
@@ -35,8 +35,6 @@ if __name__ == "__main__":
         train_accuracy = 0
         train_n = 0
         for batch_idx, (data, target) in enumerate(train_loader):
-            # plt.matshow(data[0][0])
-            # plt.show()
             optimizer.zero_grad()
             output = model(data.view(-1, 784)) # reshape from (1 x 28 x 28) to (1 x 784)
             loss = criterion(output, target)
